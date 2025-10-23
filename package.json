@@ -1,0 +1,26 @@
+{
+  "name": "synbo",
+  "version": "0.1.0",
+  "description": "Synbo - WhatsApp group synchronization bot built with Baileys.",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "baileys",
+    "synchronization"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@adiwajshing/baileys": "^6.7.10",
+    "dotenv": "^16.4.5",
+    "pino": "^8.16.1",
+    "pino-pretty": "^10.3.1",
+    "qrcode-terminal": "^0.12.0",
+    "zod": "^3.22.4"
+  }
+}
