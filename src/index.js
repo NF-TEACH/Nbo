@@ -1,9 +1,9 @@
 import makeWASocket, {
   DisconnectReason,
   fetchLatestBaileysVersion,
+  makeCacheableSignalKeyStore,
   useMultiFileAuthState
-} from '@adiwajshing/baileys';
-import qrcode from 'qrcode-terminal';
+} from '@whiskeysockets/baileys';
 import config from './config.js';
 import logger from './utils/logger.js';
 import { MessageForwarder } from './forwarding/messageForwarder.js';
@@ -33,9 +33,12 @@ const start = async () => {
   const { version } = await fetchLatestBaileysVersion();
 
   const socket = makeWASocket({
-    auth: state,
+    auth: {
+      creds: state.creds,
+      keys: makeCacheableSignalKeyStore(state.keys, logger)
+    },
     version,
-    printQRInTerminal: false,
+    printQRInTerminal: true,
     logger
   });
 
@@ -43,11 +46,7 @@ const start = async () => {
   const reporter = new SummaryReporter(socket, config.sourceGroupJid);
 
   socket.ev.on('connection.update', (update) => {
-    const { connection, lastDisconnect, qr } = update;
-
-    if (qr) {
-      qrcode.generate(qr, { small: true });
-    }
+    const { connection, lastDisconnect } = update;
 
     if (connection === 'close') {
       const statusCode = lastDisconnect?.error?.output?.statusCode;

@@ -1,4 +1,4 @@
-import { getContentType } from '@adiwajshing/baileys';
+import { getContentType } from '@whiskeysockets/baileys';
 
 const MAX_PREVIEW_LENGTH = 120;
 
