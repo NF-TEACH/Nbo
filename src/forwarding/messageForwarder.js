@@ -11,7 +11,7 @@ import { randomBetween, waitFor } from '../utils/delay.js';
 
 export class MessageForwarder {
   /**
-   * @param {import('@adiwajshing/baileys').WASocket} socket
+   * @param {import('@whiskeysockets/baileys').WASocket} socket
    */
   constructor(socket) {
     this.socket = socket;
@@ -25,7 +25,7 @@ export class MessageForwarder {
   }
 
   /**
-   * @param {import('@adiwajshing/baileys').WAMessage} message
+   * @param {import('@whiskeysockets/baileys').WAMessage} message
    * @returns {Promise<ForwardResult[]>}
    */
   async forward(message) {

@@ -4,7 +4,7 @@ const formatGroupList = (jids) => jids.map((jid) => jid.replace(/@g\.us$/, '')).
 
 export class SummaryReporter {
   /**
-   * @param {import('@adiwajshing/baileys').WASocket} socket
+   * @param {import('@whiskeysockets/baileys').WASocket} socket
    * @param {string} sourceGroupJid
    */
   constructor(socket, sourceGroupJid) {
